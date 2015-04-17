@@ -10,13 +10,6 @@
 static NSString * const SyncDefaultLocalPrimaryKey = @"remoteID";
 static NSString * const SyncDefaultRemotePrimaryKey = @"id";
 
-@interface NSEntityDescription (Sync)
-
-- (NSString *)sync_remoteKey;
-- (NSString *)sync_localKey;
-
-@end
-
 @interface NSManagedObject (Sync)
 
 - (NSManagedObject *)sync_copyInContext:(NSManagedObjectContext *)context;
@@ -273,7 +266,7 @@ static NSString * const SyncDefaultRemotePrimaryKey = @"id";
                                                    inManagedObjectContext:self.managedObjectContext];
             [object hyp_fillWithDictionary:filteredObjectDict];
         }
-
+      
         [self setValue:object
                 forKey:relationship.name];
     }
