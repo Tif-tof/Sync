@@ -203,7 +203,7 @@ static NSString * const SyncDefaultRemotePrimaryKey = @"id";
                              dataStack:(DATAStack *)dataStack
 {
     NSString *relationshipKey = relationship.userInfo[SyncCustomRemoteKey];
-    NSString *relationshipName = (relationshipKey) ?: relationship.name;
+    NSString *relationshipName = (relationshipKey) ?: [relationship.name hyp_remoteString];
     NSString *childEntityName = relationship.destinationEntity.name;
     NSString *parentEntityName = parent.entity.name;
     NSString *inverseEntityName = relationship.inverseRelationship.name;
@@ -249,7 +249,7 @@ static NSString * const SyncDefaultRemotePrimaryKey = @"id";
                       usingDictionary:(NSDictionary *)objectDict
 {
     NSString *relationshipKey = [[relationship userInfo] valueForKey:SyncCustomRemoteKey];
-    NSString *relationshipName = (relationshipKey) ?: relationship.name;
+    NSString *relationshipName = (relationshipKey) ?: [relationship.name hyp_remoteString];
     NSString *entityName = relationship.destinationEntity.name;
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                               inManagedObjectContext:self.managedObjectContext];
